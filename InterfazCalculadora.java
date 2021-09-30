@@ -461,7 +461,7 @@ public class InterfazCalculadora extends javax.swing.JFrame {
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         
         if(calculadora.getExpresion() != null)
-           expresion.setText(calculadora.getExpresion());
+           expresion.setText(expresion.getText() + calculadora.getResultado());
         else
             expresion.setText("No prevs Ans");
     }                                         
