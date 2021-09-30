@@ -522,6 +522,21 @@ public class InterfazCalculadora extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_borrarActionPerformed
+    
+    public static boolean esNumero(String num){
+        boolean res;
+        
+        try {
+            Double.parseDouble(num);
+            res = true;
+            
+        } catch (Exception e){
+            res = false;
+        }
+ 
+        return res;
+    }
+    
 
     private void chSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSigActionPerformed
         String temporal;
@@ -531,22 +546,22 @@ public class InterfazCalculadora extends javax.swing.JFrame {
         
         temporal = expresion.getText();
         tamaho = temporal.length();
-        System.out.println (tamaho);
         res = true;
         i = tamaho-1;
         
-        if (tamaho == 1){ //Caso donde apenas vas a poner el primer número negativo. Por ejemplo: 9 y presionas "+/c", entonces es -9 el resultado
+        if (esNumero(expresion.getText())){ //Caso donde apenas vas a poner el primer número negativo. Por ejemplo: 9.68 y presionas "+/c", entonces es -9.63 el resultado
             expresion.setText("-" + temporal.substring(0));
         }
-        
-        while (i > 0 && res){
-            if (temporal.charAt(i) == '(' || temporal.charAt(i) == '+' || temporal.charAt(i) == '-' || temporal.charAt(i) == '/' || temporal.charAt(i) == '*'){
+        else {
+            while (i > 0 && res){
+                if (temporal.charAt(i) == '(' || temporal.charAt(i) == '+' || temporal.charAt(i) == '-' || temporal.charAt(i) == '/' || temporal.charAt(i) == '*' || temporal.charAt(i) == '^'){
                 res = false;
+                }
+                i--;
             }
-            i--;
+            
+            expresion.setText(temporal.substring(0, i+2) + "-" + temporal.substring(i+2, tamaho));
         }
-        
-        expresion.setText(temporal.substring(0, i+2) + "-" + temporal.substring(i+2, tamaho));
     }//GEN-LAST:event_chSigActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
