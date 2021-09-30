@@ -550,7 +550,7 @@ public class InterfazCalculadora extends javax.swing.JFrame {
         i = tamaho-1;
         
         if (esNumero(expresion.getText())){ //Caso donde apenas vas a poner el primer número negativo. Por ejemplo: 9.68 y presionas "+/c", entonces es -9.63 el resultado
-            expresion.setText("-" + temporal.substring(0));
+            expresion.setText("-"+temporal.substring(0));
         }
         else {
             while (i > 0 && res){
