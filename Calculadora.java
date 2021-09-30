@@ -15,6 +15,7 @@ package calculadora;
 public class Calculadora {
 
  private String expresion;
+ private String resultado;
 
  /**
  * Constructor vacio para la clase Calculadora.
@@ -39,6 +40,16 @@ public class Calculadora {
         return expresion;
     }
   
+/**
+    * Getter para obtener el resultado
+    * @return la expresión en formato String.
+ */   
+    
+    public String getResultado(){
+        return resultado;
+    }
+    
+    
  /**
    * Conocer sí un caracter es operador
    * @param a: Es un caracter que recibe como referencia para el método. 
@@ -299,7 +310,7 @@ public class Calculadora {
  * Esta función convierte en expresión post-fija si el sintaxis es correcto.
  * @see jerarquiaOperandos 
  * @see esOperador
- * @see revisiónSintaxis
+ * @see revisionSintaxis
  * @return <ul>
  *         <li> E R R O R: Sí la expresión tiene un error de sintaxis. </li>
  *         <li> Expresión en Post-Fija: Sí la expresión no tiene un error de sisntaxis, regresará una cadena con la expresión en Post-Fija. </li>  
@@ -406,7 +417,8 @@ public class Calculadora {
     
  /**
     * Reseuelve la expresión en PostFija 
-    * @see expresionCalculadora, esOperador.
+    * @see expresionCalculadora
+    * @see esOperador
     * @return <ul> 
     *         <li> Numero: Sí se pudo resolver la expresión, y no hubo ninguna división entre 0. </li> 
     *         <li> E R R O R: Sí la expresión tiene división entre 0. </li>   
@@ -486,25 +498,17 @@ public class Calculadora {
             }    
             
             if(!error){
-                resultado=String.valueOf(numeros.pop());
+                this.resultado = String.valueOf(numeros.pop());
             }
             else
-                resultado="E R R O R";
+                this.resultado ="E R R O R";
             
         }
-        else
-          resultado="E R R O R";
-         
-        return resultado;
+        else{
+            this.resultado ="E R R O R";
+        }
+          
+        return this.resultado;
     }
     
-    public static void main (String [] args){
-        Calculadora cal2 = new Calculadora ("(4-9)*87+69/4");
-             
-        
-        System.out.println (cal2.revisionSintaxis());
-        System.out.println (cal2.expresionCalculadora());
-        System.out.println (cal2.resuelveExpresion());
-        
-    }
 }
